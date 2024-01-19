@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Lights</title>
+  <style>
+    .traffic-light {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .light {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .red { background-color: red; }
+    .yellow { background-color: yellow; }
+    .green { background-color: green; }
+  </style>
+</head>
+<body>
+
+<div class="traffic-light">
+  <div class="light red" id="red"></div>
+  <div class="light yellow" id="yellow"></div>
+  <div class="light green" id="green"></div>
+</div>
+
+<script>
+  function blinkLights() {
+    setTimeout(() => {
+      document.getElementById('red').style.backgroundColor = 'red';
+      document.getElementById('yellow').style.backgroundColor = 'transparent';
+      document.getElementById('green').style.backgroundColor = 'transparent';
+      setTimeout(() => {
+        document.getElementById('red').style.backgroundColor = 'transparent';
+        document.getElementById('yellow').style.backgroundColor = 'yellow';
+        document.getElementById('green').style.backgroundColor = 'transparent';
+        setTimeout(() => {
+          document.getElementById('red').style.backgroundColor = 'transparent';
+          document.getElementById('yellow').style.backgroundColor = 'transparent';
+          document.getElementById('green').style.backgroundColor = 'green';
+          // Repeat the process after a delay
+          setTimeout(blinkLights, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }
+
+  blinkLights(); // Start the blinking sequence
+</script>
+
+</body>
+</html>
